@@ -2,18 +2,14 @@ import os
 import re
 from google import genai
 
-# FIX: Yeh line terminal ki zaroorat khatam kar degi aur environment variable Python mein hi set kar degi
 os.environ["AQ.Ab8RN6IYAj0TI5pE4IB1F0CbkoklaoMoNPQw4NbqZmwmfzY6Bw"] = "AQ.Ab8RN6IYAj0TI5pE4IB1F0CbkoklaoMoNPQw4NbqZmwmfzY6Bw"
 
-# --- AAPKA EXISTING CODE YAHAN SE START HOGA ---
 API_KEY = os.environ.get("AQ.Ab8RN6IYAj0TI5pE4IB1F0CbkoklaoMoNPQw4NbqZmwmfzY6Bw")
 if not API_KEY:
     raise RuntimeError("GEMINI_API_KEY environment variable not set.")
 
 client = genai.Client(api_key=API_KEY)
-
-# Current Flash model — check Google's docs periodically, model names change.
-MODEL_NAME = "gemini-3.6-flash" # Yahan 1.5-flash use karein, 2.5 abhi beta mein hai
+MODEL_NAME = "gemini-3.6-flash" 
 
 def _fallback_message(transaction_amount, bank_name, error_reason):
     """Deterministic fallback used if the LLM call fails or output looks bad."""
@@ -23,11 +19,10 @@ def _fallback_message(transaction_amount, bank_name, error_reason):
     )
 
 def _looks_valid(text):
-    """Basic sanity check: not empty, not absurdly long, roughly within sentence limit."""
     if not text or not text.strip():
         return False
     sentence_count = len(re.findall(r'[.!?]', text))
-    if sentence_count > 5:  # allow some slack over the "max 3" instruction
+    if sentence_count > 5: 
         return False
     if len(text) > 600:  # guard against a runaway/hallucinated response
         return False
@@ -55,7 +50,6 @@ def generate_hinglish_nudge(transaction_amount, bank_name, error_reason):
     """
 
     try:
-        # Chat API use karne se AFC warning hamesha ke liye hat jayegi
         chat = client.chats.create(model=MODEL_NAME)
         response = chat.send_message(prompt)
         text = (response.text or "").strip()

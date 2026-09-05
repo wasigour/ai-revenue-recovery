@@ -43,8 +43,7 @@ class RecoveryAgent:
                 return self._queue_for_morning(transaction)
 
         return self._terminate(transaction['transaction_id'], "Unknown failure type.")
-
-    # --- Tool Execution Stubs (To be connected to LLMs/APIs next) ---
+        
 
     def _trigger_silent_retry(self, txn):
         # In production, this hits the Razorpay API to retry the mandate
@@ -78,9 +77,7 @@ class RecoveryAgent:
             "reason": reason
         }
 
-# --- Test the Router with your new data ---
 if __name__ == "__main__":
-    # Load the data you just generated
     df = pd.read_csv("failed_transactions.csv")
     
     agent = RecoveryAgent()

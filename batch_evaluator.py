@@ -38,7 +38,7 @@ def generate_message(amount, bank, reason):
 class RecoveryAgent:
     def __init__(self, test_mode=False):
         self.max_retries = 2
-        self.test_mode = test_mode  # Hackathon testing ke liye time block bypass karne ka switch
+        self.test_mode = test_mode 
 
     def check_compliance(self):
         if self.test_mode:
@@ -66,13 +66,12 @@ class RecoveryAgent:
                 return {"status": "QUEUED_FOR_MORNING", "reason": "Outside 8 AM - 7 PM RBI window."}
 
 
-# --- 3. BATCH EVALUATION (The Razorpay Requirement) ---
+# --- 3. BATCH EVALUATION 
 if __name__ == "__main__":
     print("Loading Transaction Data...\n")
     df = pd.read_csv("failed_transactions.csv")
     
     # test_mode=True rakha hai taaki raat mein bhi LLM chal sake aur aap test kar paayein.
-    # Final demo mein isko False kar dijiyega.
     agent = RecoveryAgent(test_mode=True)
     
     print("-" * 60)

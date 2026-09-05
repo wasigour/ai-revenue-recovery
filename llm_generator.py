@@ -2,9 +2,9 @@ import os
 import re
 from google import genai
 
-os.environ["AQ.Ab8RN6IYAj0TI5pE4IB1F0CbkoklaoMoNPQw4NbqZmwmfzY6Bw"] = "AQ.Ab8RN6IYAj0TI5pE4IB1F0CbkoklaoMoNPQw4NbqZmwmfzY6Bw"
+os.environ["Your API Key Here"] = "Your API Key Here"    # Insert Your API Key Here
 
-API_KEY = os.environ.get("AQ.Ab8RN6IYAj0TI5pE4IB1F0CbkoklaoMoNPQw4NbqZmwmfzY6Bw")
+API_KEY = os.environ.get("Your API Key Here")   #insert here also
 if not API_KEY:
     raise RuntimeError("GEMINI_API_KEY environment variable not set.")
 

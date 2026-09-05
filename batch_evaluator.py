@@ -5,7 +5,7 @@ from datetime import datetime
 from google import genai
 
 # --- 1. LLM SETUP ---
-os.environ["GEMINI_API_KEY"] = "YOUR_ACTUAL_API_KEY_HERE"
+os.environ["GEMINI_API_KEY"] = "YOUR_ACTUAL_API_KEY_HERE"  #your API key here
 API_KEY = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=API_KEY)
 MODEL_NAME = "gemini-3.6-flash"

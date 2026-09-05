@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import time
-from batch_evaluator import RecoveryAgent, generate_message  # Aapke pichle code se import
+from batch_evaluator import RecoveryAgent, generate_message  
 
 # Page Config
 st.set_page_config(page_title="AI Revenue Recovery", page_icon="💸", layout="wide")
@@ -63,6 +63,6 @@ if st.button("🚀 Run Batch Recovery Agent", type="primary"):
         
         audit_table.dataframe(pd.DataFrame(audit_logs), use_container_width=True)
         progress_bar.progress((i + 1) / len(df))
-        time.sleep(0.5) # Slight delay for visual effect during demo
+        time.sleep(0.5) 
         
     st.success("✅ Batch Evaluation Complete. Audit Ledger securely saved.")

@@ -12,7 +12,7 @@ st.markdown("Automated, RBI-compliant dunning engine with Hinglish conversationa
 # Load Data
 @st.cache_data
 def load_data():
-    return pd.read_csv("failed_transactions.csv").head(15) # Demo ke liye sirf top 15 le rahe hain
+    return pd.read_csv("failed_transactions.csv").head(1001)
 
 df = load_data()
 
